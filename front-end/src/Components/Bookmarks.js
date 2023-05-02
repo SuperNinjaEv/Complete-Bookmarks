@@ -11,7 +11,7 @@ function Bookmarks() {
   useEffect(() => {
     axios.get(`${API}/bookmarks`)
       .then((response) => setBookmarks(response.data))
-      .catch((e) => console.warn("catch", e));
+      .catch((err) => console.warn("catch", err));
   }, []);
 
 

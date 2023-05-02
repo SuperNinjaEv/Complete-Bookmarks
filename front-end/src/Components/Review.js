@@ -1,5 +1,5 @@
 
-export default function Review({ review }) {
+export default function Review({ review, handleDelete }) {
 
     return (
         <div className="Review">
@@ -8,6 +8,7 @@ export default function Review({ review }) {
             </h4>
             <h5>{review.reviewer}</h5>
             <p>{review.content}</p>
+            <button onClick={() => handleDelete(review.id)}>Delete</button>
         </div>
     )
 };
