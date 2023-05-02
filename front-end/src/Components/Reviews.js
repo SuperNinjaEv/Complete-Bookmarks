@@ -11,7 +11,7 @@ export default function Reviews() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`${API}/reviews?bookmarkId=${id}`)
+        axios.get(`${API}/bookmarks/${id}/reviews`)
             .then((res) => {
                 setReviews(res.data);
                 console.log(res);
@@ -19,7 +19,7 @@ export default function Reviews() {
     }, [id, API]);
 
     const handleAdd = (newReview) => {
-        axios.post(`${API}/reviews`, newReview)
+        axios.post(`${API}/bookmarks/${id}/reviews`, newReview)
             .then((res) => {
                 setReviews([res.data, ...reviews])
             },
@@ -28,7 +28,7 @@ export default function Reviews() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`${API},/reviews/${id}`)
+        axios.delete(`${API}/bookmarks/${id}/reviews/${id}`)
             .then((res) => {
                 const copyReviewArray = [...reviews];
                 const indexDeletedReview = copyReviewArray.findIndex((review) => {
