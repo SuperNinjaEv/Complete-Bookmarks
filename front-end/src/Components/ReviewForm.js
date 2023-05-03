@@ -25,7 +25,7 @@ setReview({...review, [event.target.id]: event.target.value})
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleSubmit(review, id);
+    props.handleEdit(review, id);
     if (reviewDetails) {
       props.toggleView()
     }

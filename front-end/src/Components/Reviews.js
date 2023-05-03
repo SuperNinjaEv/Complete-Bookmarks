@@ -45,16 +45,35 @@ export default function Reviews() {
             .catch((err) => console.warn("catch", err))
     };
 
+    const handleEdit = (updatedReview) => {
+        axios.put(`${API}/bookmarks/${id}/reviews/${updatedReview.id}`, updatedReview)
+            .then((res) => {
+                const copyReviewArray = [...reviews];
+                const indexUpdatedReview = copyReviewArray.findIndex((review) => {
+                    return review.id === updatedReview.id;
+                });
+                console.log(copyReviewArray[indexUpdatedReview]);
+                copyReviewArray[indexUpdatedReview] = res.data;
+                console.log(res.data);
+                setReviews(copyReviewArray);
+            })
+            .catch((err) => console.warn("catch", err))
+    };
+
 
     return (
         <section className="Reviews">
             <h2>Reviews</h2>
-            <ReviewForm handleSubmit={handleAdd}>
+            <ReviewForm handleAdd={handleAdd}>
                 <h3>Add a New Review</h3>
             </ReviewForm>
             {
                 reviews.map((review) => {
-                    return <Review key={review.id} review={review} handleDelete={handleDelete} />
+                    return <Review
+                        key={review.id}
+                        review={review}
+                        handleDelete={handleDelete}
+                        handleEdit={handleEdit} />
                 })
             }
         </section>

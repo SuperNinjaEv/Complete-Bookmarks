@@ -69,7 +69,7 @@ function BookmarkDetails() {
 
       </div>
 
-      {/* <Reviews /> */}
+      <Reviews />
 
     </article>
   )
