@@ -36,10 +36,11 @@ function BookmarkEditForm() {
   };
 
   useEffect(() => {
-    axios.get(`${API}/bookmarks/${id}`).then(
-      (response) => setBookmark(response.data),
-      (error) => navigate(`/not-found`)
-    );
+    axios.get(`${API}/bookmarks/${id}`)
+      .then(
+        (response) => setBookmark(response.data),
+        (error) => navigate(`/not-found`)
+      );
   }, [id, navigate]);
 
   const handleSubmit = (event) => {
